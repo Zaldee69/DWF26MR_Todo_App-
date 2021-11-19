@@ -1,24 +1,11 @@
-import { StatusBar } from "expo-status-bar";
-import { SafeAreaProvider } from "react-native-safe-area-context";
 import React from "react";
-import { StyleSheet, View } from "react-native";
-// import AddTodo from "./src/AddTodo";
-import Home from "./src/screens/Home";
+import Navigation from "./src/navigations/Navigation";
+import { NavigationContainer } from "@react-navigation/native";
 
 export default function App() {
   return (
-    <SafeAreaProvider>
-      <View style={styles.container}>
-        <Home />
-      </View>
-    </SafeAreaProvider>
+    <NavigationContainer>
+      <Navigation />
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: "#FFFFFF",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});

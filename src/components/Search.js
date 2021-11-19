@@ -9,15 +9,15 @@ const Search = () => {
         flexDirection: "row",
         justifyContent: "space-between",
         alignItems: "center",
-        marginTop: 20,
+        marginTop: 50,
         paddingBottom: 20,
         width: "99%",
       }}
     >
       <View>
         <Text style={{ fontSize: 17, fontWeight: "600" }}>Wellcome Back!</Text>
-        <Text style={{ paddingTop: 10, fontSize: 23, fontWeight: "700" }}>
-          Here's Update Today.
+        <Text style={{ paddingTop: 10, fontSize: 25, fontWeight: "700" }}>
+          Here's Update Today
         </Text>
       </View>
       <View style={{ backgroundColor: "#000", padding: 12, borderRadius: 50 }}>

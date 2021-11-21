@@ -1,63 +1,70 @@
 import React, { useState } from "react";
 import { View, Text, ScrollView, TouchableOpacity } from "react-native";
+import CustomTodoHeader from "../components/molecules/atom/CustomTodoHeader";
 import { Input } from "react-native-elements";
 import CustomBtn from "../components/molecules/atom/CustomBtn";
-import CustomTodoHeader from "../components/molecules/atom/CustomTodoHeader";
-import axios from "axios";
+import CustomDeleteBtn from "../components/molecules/atom/CustomDeleteBtn";
 import { showMessage } from "react-native-flash-message";
 import ColorPicker from "../components/molecules/atom/ColorPicker";
 
-const AddTodo = ({ navigation }) => {
+import axios from "axios";
+
+const EditTodo = ({ navigation, route }) => {
   const [color, setColor] = useState("");
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
   const [todo, setTodo] = useState("");
 
-  const postNewTodo = () => {
-    if (!color || !date || !time || !todo === "") {
-      showMessage({
-        message: "Please fill all form",
-        type: "danger",
-      });
-    } else {
-      axios
-        .post("http://192.168.1.14:4000/api/v1/todos", {
-          title: todo,
-          date,
-          time,
-          todoColor: color,
-        })
-        .then((response) => {
-          // handle success
-          setColor("");
-          setDate("");
-          setTime("");
-          setTodo("");
-          showMessage({
-            message: "Add Task Success",
-            type: "success",
-          });
+  const { id } = route.params;
 
-          navigation.push("home");
-        })
-        .catch((error) => {
-          showMessage({
-            message: "Cannot add Task",
-            type: "danger",
-          });
+  const editTodo = () => {
+    axios
+      .patch(`http://192.168.1.14:4000/api/v1/todos/${id}`, {
+        todoColor: color,
+        date,
+        time,
+        title: todo,
+      })
+      .then((response) => {
+        // handle success
+        showMessage({
+          message: "Edit Task Success",
+          type: "success",
         });
-    }
+        route.params.getTodos();
+        navigation.push("home");
+      })
+
+      .catch((error) => {
+        alert(error);
+      });
+  };
+  const deleteTodo = () => {
+    axios
+      .delete(`http://192.168.1.14:4000/api/v1/todos/${id}`)
+      .then((response) => {
+        // handle success
+        showMessage({
+          message: "Delete Task Success",
+          type: "success",
+        });
+        route.params.getTodos();
+        navigation.push("home");
+      })
+
+      .catch((error) => {
+        alert(error);
+      });
   };
 
   return (
     <View flex={1} style={{ backgroundColor: "#fff", position: "relative" }}>
-      <CustomTodoHeader title="Add Task" navigation={navigation} />
+      <CustomTodoHeader title="Edit Task" navigation={navigation} />
       <View style={{ paddingTop: 30, backgroundColor: "#fff" }}>
         <Text style={{ paddingLeft: 10, color: "#777", fontSize: 16 }}>
-          New Task
+          My Task
         </Text>
         <Input
-          value={todo}
           onChangeText={(val) => setTodo(val)}
           rightIcon={
             color === "" ? (
@@ -77,7 +84,6 @@ const AddTodo = ({ navigation }) => {
           Date
         </Text>
         <Input
-          value={date}
           onChangeText={(val) => setDate(val)}
           rightIcon={{ type: "font-awesome", name: "calendar" }}
         />
@@ -85,7 +91,6 @@ const AddTodo = ({ navigation }) => {
           Remind At
         </Text>
         <Input
-          value={time}
           onChangeText={(val) => setTime(val)}
           rightIcon={{ type: "font-awesome", name: "clock-o" }}
         />
@@ -103,13 +108,21 @@ const AddTodo = ({ navigation }) => {
           <ColorPicker setColor={setColor} />
         </ScrollView>
       </View>
-      <View style={{ marginTop: 250 }}>
-        <TouchableOpacity onPress={() => postNewTodo()}>
-          <CustomBtn title="Add Task" />
+      <View
+        style={{
+          marginTop: 205,
+        }}
+      >
+        <TouchableOpacity onPress={() => deleteTodo()}>
+          <CustomDeleteBtn />
+        </TouchableOpacity>
+
+        <TouchableOpacity onPress={() => editTodo()}>
+          <CustomBtn title="Save" />
         </TouchableOpacity>
       </View>
     </View>
   );
 };
 
-export default AddTodo;
+export default EditTodo;

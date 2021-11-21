@@ -8,19 +8,20 @@ import {
   FlatList,
 } from "react-native";
 import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
+import { showMessage } from "react-native-flash-message";
 
-const Todo = ({ navigation }) => {
+const TodoDone = ({ index }) => {
   const [todos, setTodos] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(false);
 
   React.useEffect(() => {
     getTodos();
-  }, []);
+  }, [index]);
 
   const getTodos = () => {
     setIsLoading(true);
     axios
-      .get("http://192.168.1.14:4000/api/v1/todos")
+      .get("http://192.168.1.14:4000/api/v1/todos/done")
       .then((response) => {
         // handle success
         setTodos(response.data.todoData);
@@ -31,22 +32,20 @@ const Todo = ({ navigation }) => {
       });
   };
 
-  const doneTodo = (id) => {
-    const status = {
-      status: "done",
-    };
-    setIsLoading(true);
+  const deleteTodo = (id) => {
     axios
-      .patch(`http://192.168.1.14:4000/api/v1/todos/${id}`, status)
+      .delete(`http://192.168.1.14:4000/api/v1/todos/${id}`)
       .then((response) => {
         // handle success
-        setTodos(response.data.todoData);
-        setIsLoading(false);
+        showMessage({
+          message: "Delete Task Success",
+          type: "success",
+        });
         getTodos();
       })
 
       .catch((error) => {
-        setIsLoading(false);
+        alert(error);
       });
   };
 
@@ -55,9 +54,9 @@ const Todo = ({ navigation }) => {
       <View
         style={{
           backgroundColor: `${item.todoColor}`,
+          height: 150,
           marginTop: 30,
           borderRadius: 20,
-          paddingBottom: 20,
         }}
         key={item.id.toString()}
       >
@@ -66,16 +65,9 @@ const Todo = ({ navigation }) => {
             <Text style={styles.title}>School</Text>
             <Text style={styles.title}>Everyday</Text>
           </View>
-          <TouchableOpacity
-            onPress={() =>
-              navigation.navigate("edit-todo", {
-                id: item.id.toString(),
-                getTodos,
-              })
-            }
-          >
+          <TouchableOpacity onPress={() => deleteTodo(item.id)}>
             <Text>
-              <FontAwesome5 size={23} name={"pen-square"} brand />
+              <FontAwesome5 size={23} name={"trash-alt"} brand />
             </Text>
           </TouchableOpacity>
         </View>
@@ -90,39 +82,10 @@ const Todo = ({ navigation }) => {
         >
           {item?.title}
         </Text>
-        <View style={styles.container}>
-          <View>
-            <View
-              style={{
-                flexDirection: "row",
-                alignItems: "center",
-                paddingBottom: 10,
-              }}
-            >
-              <Text>
-                <FontAwesome5 size={16} name={"calendar-alt"} brand />
-              </Text>
-              <Text
-                style={{ fontWeight: "700", paddingLeft: 8, color: "#191A1A" }}
-              >
-                {item?.date}
-              </Text>
-            </View>
-            <View style={{ flexDirection: "row", alignItems: "center" }}>
-              <Text>
-                <FontAwesome5 size={16} name={"clock"} brand />
-              </Text>
-              <Text
-                style={{ fontWeight: "700", paddingLeft: 8, color: "#191A1A" }}
-              >
-                {item?.time}
-              </Text>
-            </View>
-          </View>
-          <TouchableOpacity onPress={() => doneTodo(item.id)}>
-            <FontAwesome5 size={35} name={"circle"} brand />
-          </TouchableOpacity>
-        </View>
+        <View></View>
+        <TouchableOpacity style={{ alignItems: "flex-end", paddingRight: 15 }}>
+          <FontAwesome5 color="#000" size={35} name={"check-circle"} brand />
+        </TouchableOpacity>
       </View>
     );
   };
@@ -141,10 +104,11 @@ const Todo = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   title: {
-    borderWidth: 0.5,
     borderStyle: "solid",
-    color: "#000",
+    borderColor: "#F3F3F3",
+    color: "#191A1A",
     textAlign: "center",
+    borderWidth: 0.5,
     borderRadius: 50,
     paddingLeft: 10,
     paddingRight: 10,
@@ -161,4 +125,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Todo;
+export default TodoDone;

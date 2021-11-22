@@ -8,7 +8,7 @@ const CustomTodoHeader = ({ navigation, title }) => {
       backgroundColor="#fff"
       centerComponent={{
         text: ` ${title} `,
-        style: { color: "#000", fontSize: 20, fontWeight: "bold" },
+        style: { color: "#000", fontSize: 20, fontFamily: "Poppins-Bold" },
       }}
       leftComponent={<CustomLeftComp navigation={navigation} />}
     />

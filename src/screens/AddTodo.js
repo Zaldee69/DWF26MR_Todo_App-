@@ -53,7 +53,14 @@ const AddTodo = ({ navigation }) => {
     <View flex={1} style={{ backgroundColor: "#fff", position: "relative" }}>
       <CustomTodoHeader title="Add Task" navigation={navigation} />
       <View style={{ paddingTop: 30, backgroundColor: "#fff" }}>
-        <Text style={{ paddingLeft: 10, color: "#777", fontSize: 16 }}>
+        <Text
+          style={{
+            paddingLeft: 10,
+            color: "#777",
+            fontSize: 18,
+            fontFamily: "Poppins-Light",
+          }}
+        >
           New Task
         </Text>
         <Input
@@ -73,15 +80,30 @@ const AddTodo = ({ navigation }) => {
             )
           }
         />
-        <Text style={{ paddingLeft: 10, color: "#777", fontSize: 16 }}>
+        <Text
+          style={{
+            paddingLeft: 10,
+            color: "#777",
+            fontSize: 18,
+            fontFamily: "Poppins-Light",
+          }}
+        >
           Date
         </Text>
+
         <Input
-          value={date}
           onChangeText={(val) => setDate(val)}
           rightIcon={{ type: "font-awesome", name: "calendar" }}
+          onPress={() => setOpen(true)}
         />
-        <Text style={{ paddingLeft: 10, color: "#777", fontSize: 16 }}>
+        <Text
+          style={{
+            paddingLeft: 10,
+            color: "#777",
+            fontFamily: "Poppins-Light",
+            fontSize: 18,
+          }}
+        >
           Remind At
         </Text>
         <Input
@@ -94,7 +116,8 @@ const AddTodo = ({ navigation }) => {
             paddingLeft: 10,
             color: "#777",
             paddingBottom: 20,
-            fontSize: 17,
+            fontFamily: "Poppins-Light",
+            fontSize: 18,
           }}
         >
           Color Task

@@ -19,7 +19,11 @@ const CustomHeader = () => {
         leftComponent={<CustomLeftComp />}
         centerComponent={{
           text: "Task Manager",
-          style: { color: "#000", fontSize: 20, fontWeight: "bold" },
+          style: {
+            color: "#000",
+            fontSize: 20,
+            fontFamily: "Poppins-Medium",
+          },
         }}
         rightComponent={<CustomRightComp />}
       />

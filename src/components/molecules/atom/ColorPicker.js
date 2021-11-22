@@ -12,7 +12,7 @@ const ColorPicker = ({ setColor }) => {
         flexDirection: "row",
         justifyContent: "space-around",
         borderBottomWidth: 1,
-        borderBottomColor: "#000",
+        borderBottomColor: "#777",
         paddingBottom: 20,
         marginHorizontal: 10,
       }}

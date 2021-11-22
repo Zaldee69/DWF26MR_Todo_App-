@@ -76,13 +76,12 @@ const TodoDone = ({ index }) => {
             fontSize: 22,
             paddingLeft: 20,
             paddingTop: 20,
-            fontWeight: "bold",
+            fontFamily: "Poppins-Medium",
             color: "#191A1A",
           }}
         >
           {item?.title}
         </Text>
-        <View></View>
         <TouchableOpacity style={{ alignItems: "flex-end", paddingRight: 15 }}>
           <FontAwesome5 color="#000" size={35} name={"check-circle"} brand />
         </TouchableOpacity>
@@ -104,11 +103,10 @@ const TodoDone = ({ index }) => {
 
 const styles = StyleSheet.create({
   title: {
-    borderStyle: "solid",
-    borderColor: "#F3F3F3",
-    color: "#191A1A",
-    textAlign: "center",
     borderWidth: 0.5,
+    borderStyle: "solid",
+    color: "#000",
+    textAlign: "center",
     borderRadius: 50,
     paddingLeft: 10,
     paddingRight: 10,
@@ -116,6 +114,7 @@ const styles = StyleSheet.create({
     paddingBottom: 3,
     fontSize: 14,
     marginRight: 8,
+    fontFamily: "Poppins-Light",
   },
   container: {
     flexDirection: "row",

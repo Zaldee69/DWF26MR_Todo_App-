@@ -13,7 +13,14 @@ const CustomBtn = ({ title }) => {
         borderRadius: 50,
       }}
     >
-      <Text style={{ color: "#fff", fontWeight: "bold", fontSize: 18 }}>
+      <Text
+        style={{
+          color: "#fff",
+          fontWeight: "bold",
+          fontSize: 18,
+          fontFamily: "Poppins-Bold",
+        }}
+      >
         {`${title}`}
       </Text>
     </View>

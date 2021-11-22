@@ -4,7 +4,6 @@ import CustomHeader from "../components/molecules/CustomHeader";
 import CustomTab from "../components/CustomTab";
 import CustomFloatButton from "../components/molecules/atom/CustomFloatButton";
 import Search from "../components/Search";
-import axios from "axios";
 
 const Home = ({ navigation }) => {
   const [index, setIndex] = React.useState(0);

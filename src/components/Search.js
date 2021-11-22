@@ -19,10 +19,21 @@ const Search = ({ setSearch, search }) => {
         }}
       >
         <View>
-          <Text style={{ fontSize: 17, fontWeight: "600" }}>
-            Wellcome Back Rizaldy!
+          <Text
+            style={{
+              fontSize: 17,
+              fontFamily: "Poppins-Regular",
+            }}
+          >
+            Hi Rizaldy!
           </Text>
-          <Text style={{ paddingTop: 10, fontSize: 25, fontWeight: "700" }}>
+          <Text
+            style={{
+              paddingTop: 10,
+              fontSize: 25,
+              fontFamily: "Poppins-Medium",
+            }}
+          >
             Here's Update Today
           </Text>
         </View>

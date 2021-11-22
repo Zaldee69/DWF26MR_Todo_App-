@@ -7,10 +7,10 @@ import TodoDone from "./TodoDone";
 const CustomTab = ({ index, setIndex, navigation }) => {
   return (
     <View>
-      <Tab value={index} onChange={setIndex}>
-        <Tab.Item style={{ backgroundColor: "#000" }} title="Todo" />
+      <Tab variant="default" value={index} onChange={setIndex}>
+        <Tab.Item titleStyle={{ fontFamily: "Poppins-Regular" }} title="Todo" />
 
-        <Tab.Item title="Done" />
+        <Tab.Item titleStyle={{ fontFamily: "Poppins-Regular" }} title="Done" />
       </Tab>
 
       <TabView value={index} onChange={setIndex}>

@@ -84,7 +84,7 @@ const Todo = ({ navigation }) => {
             fontSize: 22,
             paddingLeft: 20,
             paddingTop: 20,
-            fontWeight: "bold",
+            fontFamily: "Poppins-Medium",
             color: "#191A1A",
           }}
         >
@@ -103,7 +103,11 @@ const Todo = ({ navigation }) => {
                 <FontAwesome5 size={16} name={"calendar-alt"} brand />
               </Text>
               <Text
-                style={{ fontWeight: "700", paddingLeft: 8, color: "#191A1A" }}
+                style={{
+                  fontFamily: "Poppins-Regular",
+                  paddingLeft: 8,
+                  color: "#191A1A",
+                }}
               >
                 {item?.date}
               </Text>
@@ -113,7 +117,11 @@ const Todo = ({ navigation }) => {
                 <FontAwesome5 size={16} name={"clock"} brand />
               </Text>
               <Text
-                style={{ fontWeight: "700", paddingLeft: 8, color: "#191A1A" }}
+                style={{
+                  fontFamily: "Poppins-Regular",
+                  paddingLeft: 8,
+                  color: "#191A1A",
+                }}
               >
                 {item?.time}
               </Text>
@@ -152,6 +160,7 @@ const styles = StyleSheet.create({
     paddingBottom: 3,
     fontSize: 14,
     marginRight: 8,
+    fontFamily: "Poppins-Light",
   },
   container: {
     flexDirection: "row",

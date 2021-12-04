@@ -1,2 +1,2 @@
-release: node_modules/.bin/sequelize db:migrate; node_modules/.bin/sequelize db:seed:all;
+release : sequelize-cli db:migrate
 web: node index.js

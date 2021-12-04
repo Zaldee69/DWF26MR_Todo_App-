@@ -1,2 +1,2 @@
-release : npx sequelize-cli db:migrate:status --config "config.json" --env "development"
+release : npx sequelize-cli db:migrate:
 web: node index.js

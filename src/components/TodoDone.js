@@ -21,7 +21,7 @@ const TodoDone = ({ index }) => {
   const getTodos = () => {
     setIsLoading(true);
     axios
-      .get("http://192.168.1.14:4000/api/v1/todos/done")
+      .get("https://app-todo-be.herokuapp.com/api/v1/todos/done")
       .then((response) => {
         // handle success
         setTodos(response.data.todoData);
@@ -34,7 +34,7 @@ const TodoDone = ({ index }) => {
 
   const deleteTodo = (id) => {
     axios
-      .delete(`http://192.168.1.14:4000/api/v1/todos/${id}`)
+      .delete(`https://app-todo-be.herokuapp.com/api/v1/todos/${id}`)
       .then((response) => {
         // handle success
         showMessage({

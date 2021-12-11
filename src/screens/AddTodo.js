@@ -21,7 +21,7 @@ const AddTodo = ({ navigation }) => {
       });
     } else {
       axios
-        .post("http://192.168.1.14:4000/api/v1/todos", {
+        .post("https://app-todo-be.herokuapp.com/api/v1/todos", {
           title: todo,
           date,
           time,

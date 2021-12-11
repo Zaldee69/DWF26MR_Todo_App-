@@ -20,7 +20,7 @@ const Todo = ({ navigation }) => {
   const getTodos = () => {
     setIsLoading(true);
     axios
-      .get("http://192.168.1.14:4000/api/v1/todos")
+      .get("https://app-todo-be.herokuapp.com/api/v1/todos")
       .then((response) => {
         // handle success
         setTodos(response.data.todoData);
@@ -37,7 +37,7 @@ const Todo = ({ navigation }) => {
     };
     setIsLoading(true);
     axios
-      .patch(`http://192.168.1.14:4000/api/v1/todos/${id}`, status)
+      .patch(`https://app-todo-be.herokuapp.com/api/v1/todos/${id}`, status)
       .then((response) => {
         // handle success
         setTodos(response.data.todoData);

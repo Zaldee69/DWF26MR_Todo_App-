@@ -19,7 +19,7 @@ const EditTodo = ({ navigation, route }) => {
 
   const editTodo = () => {
     axios
-      .patch(`http://192.168.1.14:4000/api/v1/todos/${id}`, {
+      .patch(`https://app-todo-be.herokuapp.com/api/v1/todos/${id}`, {
         todoColor: color,
         date,
         time,
@@ -41,7 +41,7 @@ const EditTodo = ({ navigation, route }) => {
   };
   const deleteTodo = () => {
     axios
-      .delete(`http://192.168.1.14:4000/api/v1/todos/${id}`)
+      .delete(`https://app-todo-be.herokuapp.com/api/v1/todos/${id}`)
       .then((response) => {
         // handle success
         showMessage({
